@@ -1,6 +1,15 @@
 # What is new in fork ⑂
 ability to get controller and open/close the slidable by the code
+- install dependncy from the fork
+  
+```yaml
+flutter_slidable:
+    git:
+      url: https://github.com/EmadBeltaje/flutter_slidable.git
+```
+  
 - on your SlidableWidget you can pass this function as parameter so you can get the controller of the slidable
+  
    ```dart
    onSlidableControllerCreated: (controller){
        controller.openTo(-0.5,duration: const Duration(seconds: 5)); // show items on the left
