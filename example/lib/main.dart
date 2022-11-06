@@ -16,6 +16,11 @@ class MyApp extends StatelessWidget {
         body: ListView(
           children: [
             Slidable(
+              onSlidableControllerCreated: (controller){
+                controller.openTo(-0.5,duration: const Duration(seconds: 5)); // show items on the left
+                //controller.openTo(-0.5); // show items on the right
+              },
+
               // Specify a key if the Slidable is dismissible.
               key: const ValueKey(0),
 
