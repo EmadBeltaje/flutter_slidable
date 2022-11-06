@@ -28,6 +28,7 @@ class Slidable extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.down,
     this.useTextDirection = true,
     required this.child,
+    this.onSlidableControllerCreated,
   }) : super(key: key);
 
   /// Whether this slidable is interactive.
@@ -101,6 +102,10 @@ class Slidable extends StatefulWidget {
   /// {@macro flutter.widgets.ProxyWidget.child}
   final Widget child;
 
+  /// The method will give you the controlelr of slidable once its created.
+  /// so you can open/close slidable manualy
+  final Function(SlidableController)? onSlidableControllerCreated;
+
   @override
   _SlidableState createState() => _SlidableState();
 
@@ -136,6 +141,8 @@ class _SlidableState extends State<Slidable>
     super.initState();
     controller = SlidableController(this)
       ..actionPaneType.addListener(handleActionPanelTypeChanged);
+
+    widget.onSlidableControllerCreated?.call(controller);
   }
 
   @override
